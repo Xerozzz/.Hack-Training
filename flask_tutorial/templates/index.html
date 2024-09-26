@@ -1,0 +1,19 @@
+{% extends 'base.html' %} {% block content %}
+<h1>{% block title %} Welcome to my Flask App!{% endblock %}</h1>
+<h2>Notes</h2>
+{% for note in notes %}
+<h5>{{ note.title }}</h5>
+<p>{{ note.description }}</p>
+<br />
+<p>Created: {{ note.created }}</p>
+<form action="{{ url_for('index') }}" method="POST">
+  <input type="text" value="{{ note. id }}" name="note_id" hidden />
+  <input
+    type="submit"
+    value="Delete Note"
+    class="btn btn-danger btn-sm"
+    onclick="return confirm('Are you sure you want to delete this note?')"
+  />
+</form>
+<hr />
+{% endfor %} {% endblock %}
